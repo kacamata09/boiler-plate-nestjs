@@ -1,4 +1,4 @@
-import { MessageDroneDto } from './dto/publish-drone-dto.dto';
+import { MessageDroneDto } from './dto/message-drone-dto.dto';
 import { Injectable, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { connect, MqttClient } from 'mqtt';
@@ -28,21 +28,22 @@ export class DroneService {
     });
 
     this.client.on('message', (topic, message) => {
+      console.log(message, 'hhhhhh')
       this.latestMessages.set(topic, message.toString());
     });
   }
 
   publish(topic: string, message: string): void {
-    this.client.publish("kirei/buoy/kamera", message);
+    this.client.publish(topic, message);
   }
 
   subscribe(topic: string): void {
-    this.client.subscribe("kirei/buoy/kamera");
+    this.client.subscribe(topic);
     console.log("sudah subscrib")
   }
 
   getLatestMessage(topic: string): string | undefined {
-    return this.latestMessages.get('kirei/buoy/kamera');
+    return this.latestMessages.get(topic);
   }
 
 }
