@@ -4,5 +4,5 @@ export class MessageDroneDto {
     topic: string
 
     @ApiProperty()
-    data: string
+    message: string
 }

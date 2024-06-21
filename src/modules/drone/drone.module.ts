@@ -11,7 +11,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.MQTT,
         options: {
           // url: 'mqtt://127.0.0.1:1883',
-          url: 'mqtt://test.mosquitto.org:1883',
+          url: process.env.MQTT_SERVER,
         },
       },
     ]),

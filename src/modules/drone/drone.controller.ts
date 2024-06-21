@@ -29,7 +29,6 @@ export class DroneController {
   @ApiOperation({ description: 'to get latest message from topic in param', summary: 'get message' })
   getLatestMessage(@Body() body: TopicDroneDto) {
     const latestMessage = this.droneService.getLatestMessage(body.topic);
-    console.log("had", latestMessage)
     if (latestMessage) {
       // return `Latest message on topic ${topic}: ${latestMessage}`;
       // const message = JSON.stringify(latestMessage);
