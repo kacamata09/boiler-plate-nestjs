@@ -32,7 +32,6 @@ export class DroneService {
     });
   }
   publish(topic: string, message: string): void {
-    console.log(process.env.MQTT_SERVER)
     this.client.publish(topic, message);
   }
 

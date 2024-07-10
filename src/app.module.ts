@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DroneModule } from './modules/drone/drone.module';
 import 'dotenv/config';
 import entities from './typeorm';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import entities from './typeorm';
       inject: [ConfigService],
     }),
     UserModule,
-    DroneModule],
+    DroneModule,
+    AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
